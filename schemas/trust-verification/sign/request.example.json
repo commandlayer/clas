@@ -1,0 +1,7 @@
+{
+  "clas": "clas.sign.v1",
+  "action": "sign",
+  "request_id": "req_0001",
+  "namespace": "signagent.eth",
+  "input": {}
+}
