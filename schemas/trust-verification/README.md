@@ -1,29 +1,27 @@
-# trust-verification
-
-Canonical machine trust verbs for interoperable verification, identity, assertions, approvals, signatures, witness records, and reputation vouchers.
-
-## Canonical trust verb definitions
-
-- verify = confirm claim against evidence
-- authenticate = confirm identity and source
-- attest = signed assertion of truth
-- certify = formal confirmation condition met
-- notarize = immutable timestamped witness record
-- validate = schema and rule conformance check
-- witness = observed event record
-- approve = authorization to proceed
-- sign = cryptographic commitment
-- endorse = trust and reputation voucher
-
-## Namespaces
-
-- verifyagent.eth
-- authenticateagent.eth
-- attestagent.eth
-- certifyagent.eth
-- notarizeagent.eth
-- validateagent.eth
-- witnessagent.eth
-- approveagent.eth
-- signagent.eth
-- endorseagent.eth
+{
+  "name": "commandlayer-clas-trust-schemas",
+  "version": "1.0.0",
+  "family": "trust",
+  "schemas": [
+    "schemas/v1.0.0/trust/verify/verify.request.schema.json",
+    "schemas/v1.0.0/trust/verify/verify.receipt.schema.json",
+    "schemas/v1.0.0/trust/authorize/authorize.request.schema.json",
+    "schemas/v1.0.0/trust/authorize/authorize.receipt.schema.json",
+    "schemas/v1.0.0/trust/attest/attest.request.schema.json",
+    "schemas/v1.0.0/trust/attest/attest.receipt.schema.json",
+    "schemas/v1.0.0/trust/certify/certify.request.schema.json",
+    "schemas/v1.0.0/trust/certify/certify.receipt.schema.json",
+    "schemas/v1.0.0/trust/endorse/endorse.request.schema.json",
+    "schemas/v1.0.0/trust/endorse/endorse.receipt.schema.json",
+    "schemas/v1.0.0/trust/sign/sign.request.schema.json",
+    "schemas/v1.0.0/trust/sign/sign.receipt.schema.json",
+    "schemas/v1.0.0/trust/permit/permit.request.schema.json",
+    "schemas/v1.0.0/trust/permit/permit.receipt.schema.json",
+    "schemas/v1.0.0/trust/grant/grant.request.schema.json",
+    "schemas/v1.0.0/trust/grant/grant.receipt.schema.json",
+    "schemas/v1.0.0/trust/reject/reject.request.schema.json",
+    "schemas/v1.0.0/trust/reject/reject.receipt.schema.json",
+    "schemas/v1.0.0/trust/approve/approve.request.schema.json",
+    "schemas/v1.0.0/trust/approve/approve.receipt.schema.json"
+  ]
+}
