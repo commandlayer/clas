@@ -1,0 +1,7 @@
+{
+  "clas": "clas.validate.v1",
+  "action": "validate",
+  "request_id": "req_0001",
+  "namespace": "validateagent.eth",
+  "input": {}
+}

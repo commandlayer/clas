@@ -1,0 +1,7 @@
+{
+  "clas": "clas.approve.v1",
+  "action": "approve",
+  "request_id": "req_0001",
+  "namespace": "approveagent.eth",
+  "input": {}
+}

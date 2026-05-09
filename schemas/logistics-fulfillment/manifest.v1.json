@@ -1,0 +1,23 @@
+{
+  "family": "logistics-fulfillment",
+  "version": "1.0.0",
+  "description": "CLAS family for logistics-fulfillment actions.",
+  "actions": [
+    "ship",
+    "track",
+    "fulfillment",
+    "route",
+    "schedule",
+    "delivery",
+    "return",
+    "warehouse",
+    "carrierselect",
+    "manifest"
+  ],
+  "status": "planned",
+  "receipt_required": true,
+  "verification_required": true,
+  "canonicalization": "json.sorted_keys.v1",
+  "hash": "SHA-256",
+  "signature_algorithm": "Ed25519"
+}

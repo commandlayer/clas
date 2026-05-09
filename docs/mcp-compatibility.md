@@ -1,0 +1,19 @@
+# CLAS and MCP Compatibility
+
+CLAS is designed to work naturally with Model Context Protocol (MCP) integrations.
+
+## Discovery and schema resolution
+
+MCP tools can discover available actions and map them to CLAS family manifests and action schemas.
+
+## `get_action_schema`
+
+An MCP server implementing `get_action_schema` can return canonical CLAS schema objects (`schema.v1.json`) so clients receive a standard contract.
+
+## `verify_receipt`
+
+An MCP server implementing `verify_receipt` can validate CLAS receipts using canonicalization, SHA-256 hashes, and Ed25519 signatures.
+
+## Trust model
+
+The MCP server is a bridge for access and transport. It is not the trust root. Trust comes from verifiable receipts and signer identity.

@@ -1,0 +1,13 @@
+{
+  "receipt_schema": "cl.receipt.v1",
+  "receipt_id": "rcpt_0001",
+  "action": "approve",
+  "namespace": "approveagent.eth",
+  "canonicalization": "json.sorted_keys.v1",
+  "hash_algorithm": "SHA-256",
+  "signature_algorithm": "Ed25519",
+  "payload_hash": "<sha256-hex>",
+  "signature": "<ed25519-signature>",
+  "signer": "verifyagent.eth",
+  "verified": true
+}

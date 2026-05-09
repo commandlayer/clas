@@ -1,0 +1,23 @@
+{
+  "family": "trust-verification",
+  "version": "1.0.0",
+  "description": "CLAS family for trust-verification actions.",
+  "actions": [
+    "verify",
+    "authenticate",
+    "signing",
+    "attest",
+    "validate",
+    "proof",
+    "witness",
+    "certify",
+    "notarize",
+    "approve"
+  ],
+  "status": "live",
+  "receipt_required": true,
+  "verification_required": true,
+  "canonicalization": "json.sorted_keys.v1",
+  "hash": "SHA-256",
+  "signature_algorithm": "Ed25519"
+}
