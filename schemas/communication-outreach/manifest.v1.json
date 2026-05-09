@@ -1,0 +1,23 @@
+{
+  "family": "communication-outreach",
+  "version": "1.0.0",
+  "description": "CLAS family for communication-outreach actions.",
+  "actions": [
+    "call",
+    "email",
+    "message",
+    "notify",
+    "subscribe",
+    "broadcast",
+    "reply",
+    "dm",
+    "alert",
+    "followup"
+  ],
+  "status": "planned",
+  "receipt_required": true,
+  "verification_required": true,
+  "canonicalization": "json.sorted_keys.v1",
+  "hash": "SHA-256",
+  "signature_algorithm": "Ed25519"
+}

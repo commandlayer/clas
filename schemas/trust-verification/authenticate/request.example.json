@@ -1,0 +1,7 @@
+{
+  "clas": "clas.authenticate.v1",
+  "action": "authenticate",
+  "request_id": "req_0001",
+  "namespace": "authenticateagent.eth",
+  "input": {}
+}

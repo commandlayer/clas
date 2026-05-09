@@ -1,0 +1,23 @@
+{
+  "family": "data-analytics",
+  "version": "1.0.0",
+  "description": "CLAS family for data-analytics actions.",
+  "actions": [
+    "analyze",
+    "filter",
+    "parse",
+    "classify",
+    "convert",
+    "summarize",
+    "query",
+    "index",
+    "extract",
+    "transform"
+  ],
+  "status": "planned",
+  "receipt_required": true,
+  "verification_required": true,
+  "canonicalization": "json.sorted_keys.v1",
+  "hash": "SHA-256",
+  "signature_algorithm": "Ed25519"
+}

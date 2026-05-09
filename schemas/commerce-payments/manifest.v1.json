@@ -1,0 +1,23 @@
+{
+  "family": "commerce-payments",
+  "version": "1.0.0",
+  "description": "CLAS family for commerce-payments actions.",
+  "actions": [
+    "authorize",
+    "checkout",
+    "purchase",
+    "invoice",
+    "payment",
+    "disburse",
+    "reconcile",
+    "refund",
+    "escrow",
+    "settle"
+  ],
+  "status": "planned",
+  "receipt_required": true,
+  "verification_required": true,
+  "canonicalization": "json.sorted_keys.v1",
+  "hash": "SHA-256",
+  "signature_algorithm": "Ed25519"
+}
