@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "family": "trust",
+  "verb": "authorize",
+  "principal": "agent:runtime/build-bot-17",
+  "action": "deploy",
+  "resource": {
+    "type": "k8s_deployment",
+    "id": "orders-api",
+    "uri": "urn:k8s:prod-us-east-1:namespace/payments:deployment/orders-api"
+  },
+  "constraints": {
+    "scope": "cluster:prod-us-east-1/namespace:payments",
+    "max_duration_seconds": 1800
+  },
+  "context": {
+    "environment": "prod-us-east-1",
+    "policy_id": "policy.deploy.payments.v3",
+    "tenant_id": "tenant-acme-prod",
+    "request_id": "req-authz-20260510-0001",
+    "correlation_id": "corr-release-20260510-r42"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "family": "trust",
+  "verb": "approve",
+  "approver": "runtime.commandlayer.eth",
+  "subject": {
+    "type": "deployment_request",
+    "id": "deploy-orders-api-2026-05-10-rc3",
+    "uri": "cl://deploy/requests/deploy-orders-api-2026-05-10-rc3",
+    "content_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "approval_scope": "production-deployment",
+  "conditions": {
+    "change_window": "2026-05-10T13:00:00Z/2026-05-10T14:00:00Z",
+    "requires_post_check": "synthetic-http-5m"
+  },
+  "context": {
+    "environment": "prod-us-east-1",
+    "policy_id": "policy.prod.change-approval.v5",
+    "tenant_id": "tenant-acme-prod",
+    "request_id": "req-approve-20260510-0001",
+    "correlation_id": "corr-release-20260510-a8"
+  }
+}

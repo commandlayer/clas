@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "family": "trust",
+  "verb": "endorse",
+  "endorser": "runtime.commandlayer.eth",
+  "subject": {
+    "type": "service_identity",
+    "id": "svc://payments/settlement-orchestrator",
+    "uri": "spiffe://acme.prod/payments/settlement-orchestrator",
+    "content_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "endorsement": {
+    "statement": "Service identity is approved to sign settlement batch receipts.",
+    "scope": "capability:settlement-receipt-signing",
+    "confidence": 0.94
+  },
+  "context": {
+    "environment": "prod-us-east-1",
+    "tenant_id": "tenant-acme-prod",
+    "request_id": "req-endorse-20260510-0001",
+    "correlation_id": "corr-settlement-20260510-e3"
+  }
+}

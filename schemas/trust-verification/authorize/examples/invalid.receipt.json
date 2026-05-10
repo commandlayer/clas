@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "family": "trust",
+  "verb": "authorize",
+  "receipt_id": "rcpt-authorize-20260510-0001",
+  "request": {
+    "version": "1.0.0",
+    "family": "trust",
+    "verb": "authorize",
+    "principal": "agent:runtime/build-bot-17",
+    "action": "deploy",
+    "resource": {
+      "type": "k8s_deployment",
+      "id": "orders-api",
+      "uri": "urn:k8s:prod-us-east-1:namespace/payments:deployment/orders-api"
+    },
+    "constraints": {
+      "scope": "cluster:prod-us-east-1/namespace:payments",
+      "max_duration_seconds": 1800
+    },
+    "context": {
+      "environment": "prod-us-east-1",
+      "policy_id": "policy.deploy.payments.v3",
+      "tenant_id": "tenant-acme-prod",
+      "request_id": "req-authz-20260510-0001",
+      "correlation_id": "corr-release-20260510-r42"
+    }
+  },
+  "decision": {
+    "status": "authorized",
+    "reason": "Principal has deploy scope for payments namespace.",
+    "expires_at": "2026-05-10T14:30:00Z",
+    "policy_id": "policy.deploy.payments.v3"
+  },
+  "ts": "not-a-timestamp",
+  "proof": {
+    "canonicalization": "json.sorted_keys.v1",
+    "hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "signature_alg": "ed25519",
+    "signature": "ed25519:demo:9f7c4d1ab3e6c8d14f2a98b7c3d5e1f09a8b7c6d5e4f3029182736455aabbccd",
+    "key_id": "cl-key-1",
+    "signer": "runtime.commandlayer.eth"
+  }
+}

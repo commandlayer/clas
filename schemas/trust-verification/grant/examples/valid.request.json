@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "family": "trust",
+  "verb": "grant",
+  "grantor": "runtime.commandlayer.eth",
+  "grantee": "agent:runtime/data-exporter-02",
+  "grant": {
+    "type": "access",
+    "value": "read-export-jobs",
+    "scope": "dataset:finance-settlements",
+    "resource": {
+      "type": "dataset",
+      "id": "finance-settlements",
+      "uri": "urn:datahub:dataset:finance-settlements"
+    }
+  },
+  "conditions": {
+    "expires_at": "2026-12-31T23:59:59Z",
+    "justification": "quarterly-close automation"
+  },
+  "context": {
+    "environment": "prod-us-east-1",
+    "tenant_id": "tenant-acme-prod",
+    "request_id": "req-grant-20260510-0001",
+    "correlation_id": "corr-data-20260510-g2"
+  }
+}

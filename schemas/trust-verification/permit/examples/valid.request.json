@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "family": "trust",
+  "verb": "permit",
+  "issuer": "runtime.commandlayer.eth",
+  "principal": "agent:runtime/reconciler-04",
+  "permission": {
+    "action": "patch",
+    "resource": {
+      "type": "k8s_configmap",
+      "id": "payments-runtime-config",
+      "uri": "urn:k8s:prod-us-east-1:namespace/payments:configmap/payments-runtime-config"
+    },
+    "scope": "namespace:payments"
+  },
+  "conditions": {
+    "expires_at": "2026-05-10T14:00:00Z",
+    "ip_allowlist": [
+      "10.42.0.0/16"
+    ]
+  },
+  "context": {
+    "environment": "prod-us-east-1",
+    "policy_id": "policy.runtime.patch-configmap.v1",
+    "tenant_id": "tenant-acme-prod",
+    "request_id": "req-permit-20260510-0001",
+    "correlation_id": "corr-ops-20260510-p5"
+  }
+}
