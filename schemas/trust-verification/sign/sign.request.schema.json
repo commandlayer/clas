@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust/sign/sign.request.schema.json",
+  "title": "CLAS Trust Sign Request",
+  "description": "A request to cryptographically sign a payload, digest, artifact, or statement.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "family", "verb", "signer", "payload"],
+  "properties": {
+    "version": { "const": "1.0.0" },
+    "family": { "const": "trust" },
+    "verb": { "const": "sign" },
+    "signer": { "type": "string", "minLength": 1 },
+    "payload": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "enum": ["json", "text", "digest", "artifact", "receipt", "other"] },
+        "content": {},
+        "content_hash": { "type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$" },
+        "uri": { "type": "string" }
+      }
+    },
+    "purpose": { "type": "string" },
+    "context": { "type": "object", "additionalProperties": true }
+  }
+}

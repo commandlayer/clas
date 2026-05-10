@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust/grant/grant.request.schema.json",
+  "title": "CLAS Trust Grant Request",
+  "description": "A request to grant a role, right, capability, credential, or access to a principal.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "family", "verb", "grantor", "grantee", "grant"],
+  "properties": {
+    "version": { "const": "1.0.0" },
+    "family": { "const": "trust" },
+    "verb": { "const": "grant" },
+    "grantor": { "type": "string", "minLength": 1 },
+    "grantee": { "type": "string", "minLength": 1 },
+    "grant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "value"],
+      "properties": {
+        "type": { "type": "string", "enum": ["role", "right", "capability", "access", "credential", "other"] },
+        "value": { "type": "string", "minLength": 1 },
+        "scope": { "type": "string" },
+        "resource": { "type": "object", "additionalProperties": true }
+      }
+    },
+    "conditions": { "type": "object", "additionalProperties": true },
+    "context": { "type": "object", "additionalProperties": true }
+  }
+}
