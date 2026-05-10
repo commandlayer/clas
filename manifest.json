@@ -9,8 +9,6 @@
     "schemas/v1.0.0/trust/authorize/authorize.receipt.schema.json",
     "schemas/v1.0.0/trust/attest/attest.request.schema.json",
     "schemas/v1.0.0/trust/attest/attest.receipt.schema.json",
-    "schemas/v1.0.0/trust/certify/certify.request.schema.json",
-    "schemas/v1.0.0/trust/certify/certify.receipt.schema.json",
     "schemas/v1.0.0/trust/endorse/endorse.request.schema.json",
     "schemas/v1.0.0/trust/endorse/endorse.receipt.schema.json",
     "schemas/v1.0.0/trust/sign/sign.request.schema.json",

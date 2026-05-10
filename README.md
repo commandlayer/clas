@@ -14,7 +14,6 @@ schemas/v1.0.0/trust/<verb>/<verb>.receipt.schema.json
 - verify
 - authorize
 - attest
-- certify
 - endorse
 - sign
 - permit
