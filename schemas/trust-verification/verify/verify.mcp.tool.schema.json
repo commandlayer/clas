@@ -1,0 +1,18 @@
+{
+  "name": "clas_trust_verify",
+  "title": "CLAS Trust Verify",
+  "description": "Verify a claim, artifact, receipt, credential, identity, or action. Successful execution returns a CLAS verify receipt.",
+  "inputSchema": {
+    "$ref": "./verify.request.schema.json"
+  },
+  "outputSchema": {
+    "$ref": "./verify.receipt.schema.json",
+    "description": "CLAS verify receipt returned when verification execution succeeds."
+  },
+  "annotations": {
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+  }
+}
