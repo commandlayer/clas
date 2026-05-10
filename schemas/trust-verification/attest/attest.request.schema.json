@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust/attest/attest.request.schema.json",
+  "title": "CLAS Trust Attest Request",
+  "description": "A request to produce an attestation about a subject or fact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "family", "verb", "attester", "subject", "statement"],
+  "properties": {
+    "version": { "const": "1.0.0" },
+    "family": { "const": "trust" },
+    "verb": { "const": "attest" },
+    "attester": { "type": "string", "minLength": 1 },
+    "subject": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["type", "id"],
+      "properties": {
+        "type": { "type": "string", "minLength": 1 },
+        "id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "statement": { "type": "string", "minLength": 1 },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["type", "id"],
+        "properties": {
+          "type": { "type": "string" },
+          "id": { "type": "string" },
+          "uri": { "type": "string" },
+          "hash": { "type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$" }
+        }
+      }
+    },
+    "context": { "type": "object", "additionalProperties": true }
+  }
+}

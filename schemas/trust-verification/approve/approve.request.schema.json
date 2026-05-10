@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust/approve/approve.request.schema.json",
+  "title": "CLAS Trust Approve Request",
+  "description": "A request to approve a proposal, action, request, policy, artifact, transaction, or workflow step.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "family", "verb", "approver", "subject"],
+  "properties": {
+    "version": { "const": "1.0.0" },
+    "family": { "const": "trust" },
+    "verb": { "const": "approve" },
+    "approver": { "type": "string", "minLength": 1 },
+    "subject": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["type", "id"],
+      "properties": {
+        "type": { "type": "string", "minLength": 1 },
+        "id": { "type": "string", "minLength": 1 },
+        "uri": { "type": "string" },
+        "content_hash": { "type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$" }
+      }
+    },
+    "approval_scope": { "type": "string" },
+    "conditions": { "type": "object", "additionalProperties": true },
+    "context": { "type": "object", "additionalProperties": true }
+  }
+}

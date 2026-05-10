@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust/verify/verify.request.schema.json",
+  "title": "CLAS Trust Verify Request",
+  "description": "A request to verify a claim, artifact, receipt, credential, identity, or action.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "family", "verb", "subject", "verification_type"],
+  "properties": {
+    "version": { "const": "1.0.0" },
+    "family": { "const": "trust" },
+    "verb": { "const": "verify" },
+    "subject": {
+      "type": "object",
+      "description": "The thing being verified.",
+      "additionalProperties": true,
+      "required": ["type", "id"],
+      "properties": {
+        "type": { "type": "string", "minLength": 1 },
+        "id": { "type": "string", "minLength": 1 },
+        "content_hash": { "type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$" },
+        "uri": { "type": "string" }
+      }
+    },
+    "verification_type": {
+      "type": "string",
+      "enum": ["signature", "identity", "receipt", "credential", "claim", "artifact", "policy", "other"]
+    },
+    "criteria": {
+      "type": "object",
+      "description": "Verification criteria or policy requirements.",
+      "additionalProperties": true
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

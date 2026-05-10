@@ -1,7 +1,0 @@
-{
-  "clas": "clas.endorse.v1",
-  "action": "endorse",
-  "request_id": "req_0001",
-  "namespace": "endorseagent.eth",
-  "input": {}
-}
