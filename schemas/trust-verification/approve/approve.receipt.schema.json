@@ -5,40 +5,67 @@
   "description": "A signed receipt proving that an approval decision was made.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "family", "verb", "receipt_id", "request", "approval", "ts", "proof"],
+  "required": [
+    "version",
+    "family",
+    "verb",
+    "receipt_id",
+    "request",
+    "approval",
+    "ts",
+    "proof"
+  ],
   "properties": {
-    "version": { "const": "1.0.0" },
-    "family": { "const": "trust" },
-    "verb": { "const": "approve" },
-    "receipt_id": { "type": "string", "minLength": 1 },
-    "request": { "$ref": "./approve.request.schema.json" },
+    "version": {
+      "const": "1.0.0"
+    },
+    "family": {
+      "const": "trust"
+    },
+    "verb": {
+      "const": "approve"
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request": {
+      "$ref": "./approve.request.schema.json"
+    },
     "approval": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["status"],
+      "required": [
+        "status"
+      ],
       "properties": {
-        "status": { "type": "string", "enum": ["approved", "denied", "conditional", "expired"] },
-        "approval_id": { "type": "string" },
-        "reason": { "type": "string" },
-        "expires_at": { "type": "string", "format": "date-time" }
+        "status": {
+          "type": "string",
+          "enum": [
+            "approved",
+            "denied",
+            "conditional",
+            "expired"
+          ]
+        },
+        "approval_id": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        }
       }
     },
-    "ts": { "type": "string", "format": "date-time" },
-    "proof": { "$ref": "#/$defs/proof" }
-  },
-  "$defs": {
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
     "proof": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["canonicalization", "hash", "signature_alg", "signature", "key_id", "signer"],
-      "properties": {
-        "canonicalization": { "const": "json.sorted_keys.v1" },
-        "hash": { "type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$" },
-        "signature_alg": { "const": "ed25519" },
-        "signature": { "type": "string", "minLength": 16 },
-        "key_id": { "type": "string", "minLength": 1 },
-        "signer": { "type": "string", "minLength": 1 }
-      }
+      "$ref": "../_shared/proof.schema.json"
     }
   }
 }

@@ -5,51 +5,82 @@
   "description": "A signed receipt proving that a verification action was performed.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "family", "verb", "receipt_id", "request", "result", "ts", "proof"],
+  "required": [
+    "version",
+    "family",
+    "verb",
+    "receipt_id",
+    "request",
+    "result",
+    "ts",
+    "proof"
+  ],
   "properties": {
-    "version": { "const": "1.0.0" },
-    "family": { "const": "trust" },
-    "verb": { "const": "verify" },
-    "receipt_id": { "type": "string", "minLength": 1 },
-    "request": { "$ref": "./verify.request.schema.json" },
+    "version": {
+      "const": "1.0.0"
+    },
+    "family": {
+      "const": "trust"
+    },
+    "verb": {
+      "const": "verify"
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request": {
+      "$ref": "./verify.request.schema.json"
+    },
     "result": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["status"],
+      "required": [
+        "status"
+      ],
       "properties": {
-        "status": { "type": "string", "enum": ["verified", "unverified", "invalid", "inconclusive"] },
-        "reason": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": [
+            "verified",
+            "unverified",
+            "invalid",
+            "inconclusive"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
         "checks": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["name", "passed"],
+            "required": [
+              "name",
+              "passed"
+            ],
             "properties": {
-              "name": { "type": "string" },
-              "passed": { "type": "boolean" },
-              "detail": { "type": "string" }
+              "name": {
+                "type": "string"
+              },
+              "passed": {
+                "type": "boolean"
+              },
+              "detail": {
+                "type": "string"
+              }
             }
           }
         }
       }
     },
-    "ts": { "type": "string", "format": "date-time" },
-    "proof": { "$ref": "#/$defs/proof" }
-  },
-  "$defs": {
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
     "proof": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["canonicalization", "hash", "signature_alg", "signature", "key_id", "signer"],
-      "properties": {
-        "canonicalization": { "const": "json.sorted_keys.v1" },
-        "hash": { "type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$" },
-        "signature_alg": { "const": "ed25519" },
-        "signature": { "type": "string", "minLength": 16 },
-        "key_id": { "type": "string", "minLength": 1 },
-        "signer": { "type": "string", "minLength": 1 }
-      }
+      "$ref": "../_shared/proof.schema.json"
     }
   }
 }

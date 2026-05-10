@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.commandlayer.org/schemas/trust-verification/_shared/proof.schema.json",
+  "title": "CLAS Trust Proof",
+  "description": "Shared proof envelope for trust verification receipts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "canonicalization",
+    "hash",
+    "signature_alg",
+    "signature",
+    "key_id",
+    "signer"
+  ],
+  "properties": {
+    "canonicalization": {
+      "const": "json.sorted_keys.v1"
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-fA-F0-9]{64}$"
+    },
+    "signature_alg": {
+      "const": "ed25519"
+    },
+    "signature": {
+      "type": "string",
+      "minLength": 16
+    },
+    "key_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "signer": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
