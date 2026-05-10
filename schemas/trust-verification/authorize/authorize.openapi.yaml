@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info:
+  title: CLAS Trust Verification Authorize API
+  version: 1.0.0
+paths:
+  /v1/trust-verification/authorize:
+    post:
+      operationId: authorizeTrustVerificationAction
+      description: Determine whether an actor may perform an action under a policy or scope.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./authorize.request.schema.json
+      responses:
+        '200':
+          description: Authorization receipt.
+          content:
+            application/json:
+              schema:
+                $ref: ./authorize.receipt.schema.json
+        '400':
+          description: Invalid CLAS request.
+        '401':
+          description: Unauthorized signer or caller.
+        '422':
+          description: Semantic validation failure.
