@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust/reject/reject.request.schema.json",
+  "title": "CLAS Trust Reject Request",
+  "description": "A request to reject a claim, request, proposal, action, artifact, or authorization attempt.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "family", "verb", "rejector", "subject", "reason"],
+  "properties": {
+    "version": { "const": "1.0.0" },
+    "family": { "const": "trust" },
+    "verb": { "const": "reject" },
+    "rejector": { "type": "string", "minLength": 1 },
+    "subject": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["type", "id"],
+      "properties": {
+        "type": { "type": "string", "minLength": 1 },
+        "id": { "type": "string", "minLength": 1 },
+        "uri": { "type": "string" }
+      }
+    },
+    "reason": { "type": "string", "minLength": 1 },
+    "policy_id": { "type": "string" },
+    "context": { "type": "object", "additionalProperties": true }
+  }
+}

@@ -8,6 +8,6 @@
   "signature_algorithm": "Ed25519",
   "payload_hash": "<sha256-hex>",
   "signature": "<ed25519-signature>",
-  "signer": "verifyagent.eth",
+  "signer": "validateagent.eth",
   "verified": true
 }

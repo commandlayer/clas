@@ -1,7 +1,6 @@
 {
   "clas": "clas.sign.v1",
   "action": "sign",
-  "definition": "cryptographic commitment",
   "namespace": "signagent.eth",
   "family": "trust-verification",
   "version": "1.0.0",

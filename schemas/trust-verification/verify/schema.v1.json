@@ -29,5 +29,6 @@
     "hash": "SHA-256",
     "canonicalization": "json.sorted_keys.v1",
     "network_agnostic": true
-  }
+  },
+  "definition": "confirm claim against evidence"
 }

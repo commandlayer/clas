@@ -1,27 +1,44 @@
+# CommandLayer CLAS Trust Schemas
+
+Repo-ready schema pack for the CLAS Trust family.
+
+## Path pattern
+
+```text
+schemas/v1.0.0/trust/<verb>/<verb>.request.schema.json
+schemas/v1.0.0/trust/<verb>/<verb>.receipt.schema.json
+```
+
+## Verbs
+
+- verify
+- authorize
+- attest
+- certify
+- endorse
+- sign
+- permit
+- grant
+- reject
+- approve
+
+## Receipt proof model
+
+Every receipt schema requires:
+
+```json
 {
-  "name": "commandlayer-clas-trust-schemas",
-  "version": "1.0.0",
-  "family": "trust",
-  "schemas": [
-    "schemas/v1.0.0/trust/verify/verify.request.schema.json",
-    "schemas/v1.0.0/trust/verify/verify.receipt.schema.json",
-    "schemas/v1.0.0/trust/authorize/authorize.request.schema.json",
-    "schemas/v1.0.0/trust/authorize/authorize.receipt.schema.json",
-    "schemas/v1.0.0/trust/attest/attest.request.schema.json",
-    "schemas/v1.0.0/trust/attest/attest.receipt.schema.json",
-    "schemas/v1.0.0/trust/certify/certify.request.schema.json",
-    "schemas/v1.0.0/trust/certify/certify.receipt.schema.json",
-    "schemas/v1.0.0/trust/endorse/endorse.request.schema.json",
-    "schemas/v1.0.0/trust/endorse/endorse.receipt.schema.json",
-    "schemas/v1.0.0/trust/sign/sign.request.schema.json",
-    "schemas/v1.0.0/trust/sign/sign.receipt.schema.json",
-    "schemas/v1.0.0/trust/permit/permit.request.schema.json",
-    "schemas/v1.0.0/trust/permit/permit.receipt.schema.json",
-    "schemas/v1.0.0/trust/grant/grant.request.schema.json",
-    "schemas/v1.0.0/trust/grant/grant.receipt.schema.json",
-    "schemas/v1.0.0/trust/reject/reject.request.schema.json",
-    "schemas/v1.0.0/trust/reject/reject.receipt.schema.json",
-    "schemas/v1.0.0/trust/approve/approve.request.schema.json",
-    "schemas/v1.0.0/trust/approve/approve.receipt.schema.json"
-  ]
+  "canonicalization": "json.sorted_keys.v1",
+  "hash": "sha256:<64-char-hex>",
+  "signature_alg": "ed25519",
+  "signature": "<base64url-signature>",
+  "key_id": "<kid>",
+  "signer": "<ens-or-did-or-runtime-id>"
 }
+```
+
+## Validate
+
+```bash
+python scripts/validate_json.py
+```

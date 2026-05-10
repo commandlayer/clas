@@ -5,7 +5,6 @@
   "family": "trust-verification",
   "version": "1.0.0",
   "status": "defined",
-  "definition": "trust and reputation voucher",
   "input": {
     "type": "object",
     "additionalProperties": false,
@@ -30,5 +29,6 @@
     "hash": "SHA-256",
     "canonicalization": "json.sorted_keys.v1",
     "network_agnostic": true
-  }
+  },
+  "definition": "trust and reputation voucher"
 }

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust/certify/certify.receipt.schema.json",
+  "title": "CLAS Trust Certify Receipt",
+  "description": "A signed receipt proving that a certification decision was made.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "family", "verb", "receipt_id", "request", "certification", "ts", "proof"],
+  "properties": {
+    "version": { "const": "1.0.0" },
+    "family": { "const": "trust" },
+    "verb": { "const": "certify" },
+    "receipt_id": { "type": "string", "minLength": 1 },
+    "request": { "$ref": "./certify.request.schema.json" },
+    "certification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": { "type": "string", "enum": ["certified", "not_certified", "conditional", "revoked"] },
+        "certificate_id": { "type": "string" },
+        "reason": { "type": "string" },
+        "issued_at": { "type": "string", "format": "date-time" },
+        "expires_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "ts": { "type": "string", "format": "date-time" },
+    "proof": { "$ref": "#/$defs/proof" }
+  },
+  "$defs": {
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonicalization", "hash", "signature_alg", "signature", "key_id", "signer"],
+      "properties": {
+        "canonicalization": { "const": "json.sorted_keys.v1" },
+        "hash": { "type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$" },
+        "signature_alg": { "const": "ed25519" },
+        "signature": { "type": "string", "minLength": 16 },
+        "key_id": { "type": "string", "minLength": 1 },
+        "signer": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}
