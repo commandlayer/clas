@@ -5,42 +5,77 @@
   "description": "A signed receipt proving that a signing action was performed.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "family", "verb", "receipt_id", "request", "signature_result", "ts", "proof"],
+  "required": [
+    "version",
+    "family",
+    "verb",
+    "receipt_id",
+    "request",
+    "signature_result",
+    "ts",
+    "proof"
+  ],
   "properties": {
-    "version": { "const": "1.0.0" },
-    "family": { "const": "trust" },
-    "verb": { "const": "sign" },
-    "receipt_id": { "type": "string", "minLength": 1 },
-    "request": { "$ref": "./sign.request.schema.json" },
+    "version": {
+      "const": "1.0.0"
+    },
+    "family": {
+      "const": "trust"
+    },
+    "verb": {
+      "const": "sign"
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request": {
+      "$ref": "./sign.request.schema.json"
+    },
     "signature_result": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["status", "signature_alg", "signature", "key_id"],
+      "required": [
+        "status",
+        "signature_alg",
+        "signature",
+        "key_id"
+      ],
       "properties": {
-        "status": { "type": "string", "enum": ["signed", "refused", "failed"] },
-        "signature_alg": { "const": "ed25519" },
-        "signature": { "type": "string", "minLength": 16 },
-        "key_id": { "type": "string", "minLength": 1 },
-        "content_hash": { "type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$" },
-        "reason": { "type": "string" }
+        "status": {
+          "type": "string",
+          "enum": [
+            "signed",
+            "refused",
+            "failed"
+          ]
+        },
+        "signature_alg": {
+          "const": "ed25519"
+        },
+        "signature": {
+          "type": "string",
+          "minLength": 16
+        },
+        "key_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[a-fA-F0-9]{64}$"
+        },
+        "reason": {
+          "type": "string"
+        }
       }
     },
-    "ts": { "type": "string", "format": "date-time" },
-    "proof": { "$ref": "#/$defs/proof" }
-  },
-  "$defs": {
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
     "proof": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["canonicalization", "hash", "signature_alg", "signature", "key_id", "signer"],
-      "properties": {
-        "canonicalization": { "const": "json.sorted_keys.v1" },
-        "hash": { "type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$" },
-        "signature_alg": { "const": "ed25519" },
-        "signature": { "type": "string", "minLength": 16 },
-        "key_id": { "type": "string", "minLength": 1 },
-        "signer": { "type": "string", "minLength": 1 }
-      }
+      "$ref": "../_shared/proof.schema.json"
     }
   }
 }

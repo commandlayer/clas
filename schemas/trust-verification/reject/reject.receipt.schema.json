@@ -5,40 +5,62 @@
   "description": "A signed receipt proving that a rejection decision was made.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "family", "verb", "receipt_id", "request", "rejection", "ts", "proof"],
+  "required": [
+    "version",
+    "family",
+    "verb",
+    "receipt_id",
+    "request",
+    "rejection",
+    "ts",
+    "proof"
+  ],
   "properties": {
-    "version": { "const": "1.0.0" },
-    "family": { "const": "trust" },
-    "verb": { "const": "reject" },
-    "receipt_id": { "type": "string", "minLength": 1 },
-    "request": { "$ref": "./reject.request.schema.json" },
+    "version": {
+      "const": "1.0.0"
+    },
+    "family": {
+      "const": "trust"
+    },
+    "verb": {
+      "const": "reject"
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request": {
+      "$ref": "./reject.request.schema.json"
+    },
     "rejection": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["status", "reason"],
+      "required": [
+        "status",
+        "reason"
+      ],
       "properties": {
-        "status": { "const": "rejected" },
-        "reason": { "type": "string", "minLength": 1 },
-        "policy_id": { "type": "string" },
-        "appeal_uri": { "type": "string" }
+        "status": {
+          "const": "rejected"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "policy_id": {
+          "type": "string"
+        },
+        "appeal_uri": {
+          "type": "string"
+        }
       }
     },
-    "ts": { "type": "string", "format": "date-time" },
-    "proof": { "$ref": "#/$defs/proof" }
-  },
-  "$defs": {
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
     "proof": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["canonicalization", "hash", "signature_alg", "signature", "key_id", "signer"],
-      "properties": {
-        "canonicalization": { "const": "json.sorted_keys.v1" },
-        "hash": { "type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$" },
-        "signature_alg": { "const": "ed25519" },
-        "signature": { "type": "string", "minLength": 16 },
-        "key_id": { "type": "string", "minLength": 1 },
-        "signer": { "type": "string", "minLength": 1 }
-      }
+      "$ref": "../_shared/proof.schema.json"
     }
   }
 }
