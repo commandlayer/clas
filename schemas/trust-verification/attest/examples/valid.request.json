@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "family": "trust",
+  "verb": "attest",
+  "attester": "runtime.commandlayer.eth",
+  "subject": {
+    "type": "container_image",
+    "id": "ghcr.io/acme/payments@sha256:9f4ce1de2cbb19aa1f8d36a717f6312ad28d7cb151f5e4d7dcce8fd001122334",
+    "uri": "ghcr.io/acme/payments@sha256:9f4ce1de2cbb19aa1f8d36a717f6312ad28d7cb151f5e4d7dcce8fd001122334"
+  },
+  "statement": "Image passed vulnerability policy P0/P1 gate at build time.",
+  "evidence": [
+    {
+      "type": "sbom",
+      "id": "sbom-payments-20260510",
+      "uri": "s3://acme-secure-artifacts/sbom/payments-20260510.spdx.json",
+      "hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "type": "scan_report",
+      "id": "scan-trivy-20260510-01",
+      "uri": "s3://acme-secure-artifacts/scans/payments-20260510-trivy.json",
+      "hash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  ],
+  "context": {
+    "environment": "prod-us-east-1",
+    "policy_id": "policy.image-vuln-gate.v2",
+    "tenant_id": "tenant-acme-prod",
+    "request_id": "req-attest-20260510-0001",
+    "correlation_id": "corr-build-20260510-i7"
+  }
+}

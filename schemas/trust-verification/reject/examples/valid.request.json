@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "family": "trust",
+  "verb": "reject",
+  "rejector": "runtime.commandlayer.eth",
+  "subject": {
+    "type": "deployment_request",
+    "id": "deploy-orders-api-2026-05-10-rc3",
+    "uri": "cl://deploy/requests/deploy-orders-api-2026-05-10-rc3"
+  },
+  "reason": "Canary error budget exceeded during pre-prod validation.",
+  "policy_id": "policy.prod.error-budget-gate.v2",
+  "context": {
+    "environment": "prod-us-east-1",
+    "tenant_id": "tenant-acme-prod",
+    "request_id": "req-reject-20260510-0001",
+    "correlation_id": "corr-release-20260510-r8"
+  }
+}

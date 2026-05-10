@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "family": "trust-verification",
+  "verb": "authenticate",
+  "subject": {
+    "type": "agent_signer",
+    "id": "agent.build-bot-17",
+    "uri": "did:pkh:eip155:1:0xC0MM4ND1A7ER0000000000000000000000000017",
+    "claimed_identity": "runtime.commandlayer.eth",
+    "content_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "method": "did-sig-challenge",
+  "credential": {
+    "type": "challenge_response",
+    "challenge_id": "chal-auth-20260510-01",
+    "nonce": "n-9b38eab246",
+    "audience": "clas-control-plane"
+  },
+  "context": {
+    "environment": "prod-us-east-1",
+    "tenant_id": "tenant-acme-prod",
+    "request_id": "req-authn-20260510-0001",
+    "correlation_id": "corr-authn-20260510-z9"
+  }
+}

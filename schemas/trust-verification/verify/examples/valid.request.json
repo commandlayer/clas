@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "family": "trust",
+  "verb": "verify",
+  "subject": {
+    "type": "execution_receipt",
+    "id": "exec-receipt-2026-05-10-001",
+    "uri": "cl://receipts/execution/exec-receipt-2026-05-10-001",
+    "content_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "verification_type": "signature",
+  "criteria": {
+    "required_signer": "runtime.commandlayer.eth",
+    "required_key_id": "cl-key-1",
+    "required_signature_alg": "ed25519"
+  },
+  "context": {
+    "environment": "prod-us-east-1",
+    "network": "base-mainnet",
+    "chain_id": 8453,
+    "tenant_id": "tenant-acme-prod",
+    "request_id": "req-verify-20260510-0001",
+    "correlation_id": "corr-trustflow-20260510-a1"
+  }
+}
