@@ -31,13 +31,24 @@ All CLAS actions should:
 
 ## Schema rules
 
-Every action folder should include:
+Every action verb folder should include:
 
-- README.md
-- schema.v1.json
-- request.example.json
-- response.example.json
-- receipt.example.json
+- `<verb>.request.schema.json`
+- `<verb>.receipt.schema.json`
+- `examples/`
+  - `valid.request.json`
+  - `valid.receipt.json`
+  - `tampered.receipt.json`
+  - `invalid.receipt.json`
+
+Select verbs may additionally include:
+
+- `<verb>.openapi.yaml`
+- `<verb>.mcp.tool.schema.json`
+
+## Family manifests
+
+Each family has a `manifest.json` at its root. See [docs/family-manifests.md](docs/family-manifests.md) for the manifest format.
 
 ## Verification requirements
 

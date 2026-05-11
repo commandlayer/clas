@@ -1,25 +1,56 @@
 {
-  "name": "commandlayer-clas-trust-schemas",
+  "name": "commandlayer-clas",
   "version": "1.0.0",
-  "family": "trust",
-  "schemas": [
-    "schemas/v1.0.0/trust/verify/verify.request.schema.json",
-    "schemas/v1.0.0/trust/verify/verify.receipt.schema.json",
-    "schemas/v1.0.0/trust/authorize/authorize.request.schema.json",
-    "schemas/v1.0.0/trust/authorize/authorize.receipt.schema.json",
-    "schemas/v1.0.0/trust/attest/attest.request.schema.json",
-    "schemas/v1.0.0/trust/attest/attest.receipt.schema.json",
-    "schemas/v1.0.0/trust/endorse/endorse.request.schema.json",
-    "schemas/v1.0.0/trust/endorse/endorse.receipt.schema.json",
-    "schemas/v1.0.0/trust/sign/sign.request.schema.json",
-    "schemas/v1.0.0/trust/sign/sign.receipt.schema.json",
-    "schemas/v1.0.0/trust/permit/permit.request.schema.json",
-    "schemas/v1.0.0/trust/permit/permit.receipt.schema.json",
-    "schemas/v1.0.0/trust/grant/grant.request.schema.json",
-    "schemas/v1.0.0/trust/grant/grant.receipt.schema.json",
-    "schemas/v1.0.0/trust/reject/reject.request.schema.json",
-    "schemas/v1.0.0/trust/reject/reject.receipt.schema.json",
-    "schemas/v1.0.0/trust/approve/approve.request.schema.json",
-    "schemas/v1.0.0/trust/approve/approve.receipt.schema.json"
+  "families": [
+    {
+      "family": "trust-verification",
+      "manifest": "schemas/trust-verification/manifest.json",
+      "status": "draft-v1"
+    },
+    {
+      "family": "commerce-payments",
+      "manifest": "schemas/commerce-payments/manifest.json",
+      "status": "planned"
+    },
+    {
+      "family": "communication-outreach",
+      "manifest": "schemas/communication-outreach/manifest.json",
+      "status": "planned"
+    },
+    {
+      "family": "content-creation",
+      "manifest": "schemas/content-creation/manifest.json",
+      "status": "planned"
+    },
+    {
+      "family": "data-analytics",
+      "manifest": "schemas/data-analytics/manifest.json",
+      "status": "planned"
+    },
+    {
+      "family": "identity-compliance",
+      "manifest": "schemas/identity-compliance/manifest.json",
+      "status": "planned"
+    },
+    {
+      "family": "lifecycle-management",
+      "manifest": "schemas/lifecycle-management/manifest.json",
+      "status": "planned"
+    },
+    {
+      "family": "logistics-fulfillment",
+      "manifest": "schemas/logistics-fulfillment/manifest.json",
+      "status": "planned"
+    },
+    {
+      "family": "training-optimization",
+      "manifest": "schemas/training-optimization/manifest.json",
+      "status": "planned"
+    },
+    {
+      "family": "workflow-approval",
+      "manifest": "schemas/workflow-approval/manifest.json",
+      "status": "planned"
+    }
   ]
 }
