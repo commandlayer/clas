@@ -1,13 +1,18 @@
 # CLAS Schema Rules
 
-## Required schema shape
+## Schema file convention
 
-Every CLAS action schema must define:
-- `action`
-- `input`
-- `output`
-- `receipt`
-- `verification`
+Each CLAS action verb uses two schema files:
+
+- `<verb>.request.schema.json` — defines the shape of a valid request payload
+- `<verb>.receipt.schema.json` — defines the shape of a valid receipt payload
+
+These live in the verb's folder under the family directory, for example:
+
+```
+schemas/trust-verification/verify/verify.request.schema.json
+schemas/trust-verification/verify/verify.receipt.schema.json
+```
 
 ## Small and strict
 
@@ -20,5 +25,9 @@ CLAS v1 prioritizes portability and clarity over large, monolithic enterprise pa
 ## Versioning rules
 
 - Use semantic versions in `version` (for example `1.0.0`).
-- Introduce a new schema file/version when making breaking structural changes.
-- Keep existing versions immutable once published.
+- Introduce a new schema file when making breaking structural changes.
+- Keep existing schema versions immutable once published.
+
+## Schema-valid vs cryptographically valid
+
+A receipt can pass schema validation while still failing cryptographic verification. Schema conformance and cryptographic integrity are separate checks. Both must be evaluated.

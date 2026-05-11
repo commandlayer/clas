@@ -117,7 +117,7 @@ cl.capability=verify.receipt
 cl.version=1.0
 cl.family=trust-verification
 cl.verb=verify
-cl.proof=ecdsa-secp256k1+jws
+cl.proof=Ed25519
 cl.signer=did:pkh:eip155:1:0x1111111111111111111111111111111111111111
 agent-registration[eip155:1:0xRegistry][agent-001]=eip155:1/agent-001
 ```
@@ -134,7 +134,7 @@ cl.capability=authorize.action
 cl.version=1.0
 cl.family=trust-verification
 cl.verb=authorize
-cl.proof=ecdsa-secp256k1+jws
+cl.proof=Ed25519
 cl.signer=did:pkh:eip155:1:0x2222222222222222222222222222222222222222
 agent-registration[eip155:1:0xRegistry][agent-002]=eip155:1/agent-002
 ```
@@ -151,7 +151,7 @@ cl.capability=attest.claim
 cl.version=1.0
 cl.family=trust-verification
 cl.verb=attest
-cl.proof=ecdsa-secp256k1+jws
+cl.proof=Ed25519
 cl.signer=did:pkh:eip155:1:0x3333333333333333333333333333333333333333
 agent-registration[eip155:1:0xRegistry][agent-003]=eip155:1/agent-003
 ```
