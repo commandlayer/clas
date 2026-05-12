@@ -1,0 +1,18 @@
+{
+  "name": "clas_trust_reject",
+  "title": "CLAS Trust Reject",
+  "description": "Record a negative decision on a proposal, transaction, request, deployment, or workflow step. Successful execution returns a CLAS reject receipt.",
+  "inputSchema": {
+    "$ref": "./reject.request.schema.json"
+  },
+  "outputSchema": {
+    "$ref": "./reject.receipt.schema.json",
+    "description": "CLAS reject receipt returned when reject execution succeeds."
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": false
+  }
+}

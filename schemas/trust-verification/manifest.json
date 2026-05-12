@@ -16,7 +16,9 @@
       "verb": "authenticate",
       "request_schema": "authenticate/authenticate.request.schema.json",
       "receipt_schema": "authenticate/authenticate.receipt.schema.json",
-      "examples_path": "authenticate/examples"
+      "examples_path": "authenticate/examples",
+      "openapi_path": "authenticate/authenticate.openapi.yaml",
+      "mcp_tool_schema_path": "authenticate/authenticate.mcp.tool.schema.json"
     },
     {
       "verb": "authorize",
@@ -38,37 +40,49 @@
       "verb": "sign",
       "request_schema": "sign/sign.request.schema.json",
       "receipt_schema": "sign/sign.receipt.schema.json",
-      "examples_path": "sign/examples"
+      "examples_path": "sign/examples",
+      "openapi_path": "sign/sign.openapi.yaml",
+      "mcp_tool_schema_path": "sign/sign.mcp.tool.schema.json"
     },
     {
       "verb": "permit",
       "request_schema": "permit/permit.request.schema.json",
       "receipt_schema": "permit/permit.receipt.schema.json",
-      "examples_path": "permit/examples"
+      "examples_path": "permit/examples",
+      "openapi_path": "permit/permit.openapi.yaml",
+      "mcp_tool_schema_path": "permit/permit.mcp.tool.schema.json"
     },
     {
       "verb": "grant",
       "request_schema": "grant/grant.request.schema.json",
       "receipt_schema": "grant/grant.receipt.schema.json",
-      "examples_path": "grant/examples"
+      "examples_path": "grant/examples",
+      "openapi_path": "grant/grant.openapi.yaml",
+      "mcp_tool_schema_path": "grant/grant.mcp.tool.schema.json"
     },
     {
       "verb": "approve",
       "request_schema": "approve/approve.request.schema.json",
       "receipt_schema": "approve/approve.receipt.schema.json",
-      "examples_path": "approve/examples"
+      "examples_path": "approve/examples",
+      "openapi_path": "approve/approve.openapi.yaml",
+      "mcp_tool_schema_path": "approve/approve.mcp.tool.schema.json"
     },
     {
       "verb": "reject",
       "request_schema": "reject/reject.request.schema.json",
       "receipt_schema": "reject/reject.receipt.schema.json",
-      "examples_path": "reject/examples"
+      "examples_path": "reject/examples",
+      "openapi_path": "reject/reject.openapi.yaml",
+      "mcp_tool_schema_path": "reject/reject.mcp.tool.schema.json"
     },
     {
       "verb": "endorse",
       "request_schema": "endorse/endorse.request.schema.json",
       "receipt_schema": "endorse/endorse.receipt.schema.json",
-      "examples_path": "endorse/examples"
+      "examples_path": "endorse/examples",
+      "openapi_path": "endorse/endorse.openapi.yaml",
+      "mcp_tool_schema_path": "endorse/endorse.mcp.tool.schema.json"
     }
   ]
 }

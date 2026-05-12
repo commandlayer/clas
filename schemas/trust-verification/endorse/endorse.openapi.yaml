@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info:
+  title: CLAS Trust Verification Endorse API
+  version: 1.0.0
+paths:
+  /v1/trust-verification/endorse:
+    post:
+      operationId: endorseTrustVerificationAction
+      description: Add reputation, support, or trust weight to an actor, signer, claim, schema, service, or capability.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./endorse.request.schema.json
+      responses:
+        '200':
+          description: Endorse receipt.
+          content:
+            application/json:
+              schema:
+                $ref: ./endorse.receipt.schema.json
+        '400':
+          description: Invalid CLAS request.
+        '401':
+          description: Unauthorized signer or caller.
+        '422':
+          description: Semantic validation failure.

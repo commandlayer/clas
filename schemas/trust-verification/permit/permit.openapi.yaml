@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info:
+  title: CLAS Trust Verification Permit API
+  version: 1.0.0
+paths:
+  /v1/trust-verification/permit:
+    post:
+      operationId: permitTrustVerificationAction
+      description: Create or manage a portable permission artifact.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./permit.request.schema.json
+      responses:
+        '200':
+          description: Permit receipt.
+          content:
+            application/json:
+              schema:
+                $ref: ./permit.receipt.schema.json
+        '400':
+          description: Invalid CLAS request.
+        '401':
+          description: Unauthorized signer or caller.
+        '422':
+          description: Semantic validation failure.

@@ -1,0 +1,18 @@
+{
+  "name": "clas_trust_authenticate",
+  "title": "CLAS Trust Authenticate",
+  "description": "Confirm the identity of an actor, signer, agent, service, key, user, or caller. Successful execution returns a CLAS authenticate receipt.",
+  "inputSchema": {
+    "$ref": "./authenticate.request.schema.json"
+  },
+  "outputSchema": {
+    "$ref": "./authenticate.receipt.schema.json",
+    "description": "CLAS authenticate receipt returned when authenticate execution succeeds."
+  },
+  "annotations": {
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+  }
+}
