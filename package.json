@@ -1,6 +1,10 @@
 {
+  "name": "@commandlayer/clas",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "test": "node scripts/validate-trust-verification-examples.mjs",
+    "validate": "node scripts/validate-trust-verification-examples.mjs",
     "validate:trust-verification": "node scripts/validate-trust-verification-examples.mjs"
   },
   "devDependencies": {
