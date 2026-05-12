@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info:
+  title: CLAS Trust Verification Reject API
+  version: 1.0.0
+paths:
+  /v1/trust-verification/reject:
+    post:
+      operationId: rejectTrustVerificationAction
+      description: Record a negative decision on a proposal, transaction, request, deployment, or workflow step.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./reject.request.schema.json
+      responses:
+        '200':
+          description: Reject receipt.
+          content:
+            application/json:
+              schema:
+                $ref: ./reject.receipt.schema.json
+        '400':
+          description: Invalid CLAS request.
+        '401':
+          description: Unauthorized signer or caller.
+        '422':
+          description: Semantic validation failure.

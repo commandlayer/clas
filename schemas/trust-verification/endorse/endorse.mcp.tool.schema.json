@@ -1,0 +1,18 @@
+{
+  "name": "clas_trust_endorse",
+  "title": "CLAS Trust Endorse",
+  "description": "Add reputation, support, or trust weight to an actor, signer, claim, schema, service, or capability. Successful execution returns a CLAS endorse receipt.",
+  "inputSchema": {
+    "$ref": "./endorse.request.schema.json"
+  },
+  "outputSchema": {
+    "$ref": "./endorse.receipt.schema.json",
+    "description": "CLAS endorse receipt returned when endorse execution succeeds."
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": true
+  }
+}

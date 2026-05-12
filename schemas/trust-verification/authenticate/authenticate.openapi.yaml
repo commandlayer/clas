@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info:
+  title: CLAS Trust Verification Authenticate API
+  version: 1.0.0
+paths:
+  /v1/trust-verification/authenticate:
+    post:
+      operationId: authenticateTrustVerificationAction
+      description: Confirm the identity of an actor, signer, agent, service, key, user, or caller.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./authenticate.request.schema.json
+      responses:
+        '200':
+          description: Authenticate receipt.
+          content:
+            application/json:
+              schema:
+                $ref: ./authenticate.receipt.schema.json
+        '400':
+          description: Invalid CLAS request.
+        '401':
+          description: Unauthorized signer or caller.
+        '422':
+          description: Semantic validation failure.
