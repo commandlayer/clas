@@ -1,0 +1,47 @@
+{
+  "type": "commandlayer.discovery_record",
+  "version": "1.0.0",
+  "agent_name": "verifyagent.eth",
+  "status": "example",
+  "family": "trust-verification",
+  "capabilities": [
+    "clas.trust-verification.verify"
+  ],
+  "capability_catalog_path": "../capabilities.json",
+  "schemas": {
+    "request_schema_path": "../verify/verify.request.schema.json",
+    "receipt_schema_path": "../verify/verify.receipt.schema.json"
+  },
+  "openapi_path": "../verify/verify.openapi.yaml",
+  "mcp_tool_schema_path": "../verify/verify.mcp.tool.schema.json",
+  "verifier": {
+    "endpoint": "https://www.commandlayer.org/api/verify",
+    "expected_checks": [
+      "schema_valid",
+      "hash_matched",
+      "signature_valid",
+      "signer_resolved",
+      "signer_matched",
+      "trust_verb_identified",
+      "trust_verb"
+    ]
+  },
+  "proof_url_pattern": "https://www.commandlayer.org/verify/r/{receipt_id}",
+  "ens": {
+    "required": false,
+    "namespace": "verifyagent.eth",
+    "txt_record_examples": [
+      "cl.capabilities",
+      "cl.verifier",
+      "cl.proof_url",
+      "cl.schema",
+      "cl.openapi",
+      "cl.mcp"
+    ]
+  },
+  "erc8004": {
+    "required": false,
+    "note": "Can be used as optional registry alignment where supported."
+  },
+  "notes": "Example discovery record only. CLAS does not require ENS or ERC-8004."
+}
