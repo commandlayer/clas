@@ -1,0 +1,224 @@
+{
+  "family": "trust-verification",
+  "version": "1.0.0",
+  "capabilities": [
+    {
+      "canonical_name": "clas.trust-verification.verify",
+      "family": "trust-verification",
+      "version": "1.0.0",
+      "verb": "verify",
+      "status": "stable",
+      "title": "Verify Trust Evidence",
+      "description": "Evaluates trust evidence and returns a machine-verifiable verification result. ENS namespace is optional discovery metadata and is not required.",
+      "request_schema_path": "schemas/trust-verification/verify/verify.request.schema.json",
+      "receipt_schema_path": "schemas/trust-verification/verify/verify.receipt.schema.json",
+      "examples_path": "schemas/trust-verification/verify/examples",
+      "openapi_path": "schemas/trust-verification/verify/verify.openapi.yaml",
+      "mcp_tool_schema_path": "schemas/trust-verification/verify/verify.mcp.tool.schema.json",
+      "verifier_expectations": [
+        "schema_valid",
+        "hash_matched",
+        "signature_valid",
+        "signer_resolved",
+        "signer_matched",
+        "trust_verb_identified",
+        "trust_verb"
+      ],
+      "sdk_usage": "cl.wrap(\"verify\", handler)",
+      "discovery_hints": {
+        "ens_namespace": "verifyagent.eth",
+        "mcp_tool_name": "clas_trust_verify",
+        "api_endpoint": "/v1/trust-verification/verify"
+      }
+    },
+    {
+      "canonical_name": "clas.trust-verification.authenticate",
+      "family": "trust-verification",
+      "version": "1.0.0",
+      "verb": "authenticate",
+      "status": "stable",
+      "title": "Authenticate Actor Identity",
+      "description": "Confirms the identity of an actor, signer, agent, or service for trust workflows. ENS namespace is optional discovery metadata and is not required.",
+      "request_schema_path": "schemas/trust-verification/authenticate/authenticate.request.schema.json",
+      "receipt_schema_path": "schemas/trust-verification/authenticate/authenticate.receipt.schema.json",
+      "examples_path": "schemas/trust-verification/authenticate/examples",
+      "openapi_path": "schemas/trust-verification/authenticate/authenticate.openapi.yaml",
+      "mcp_tool_schema_path": "schemas/trust-verification/authenticate/authenticate.mcp.tool.schema.json",
+      "verifier_expectations": ["schema_valid", "hash_matched", "signature_valid", "signer_resolved", "signer_matched", "trust_verb_identified", "trust_verb"],
+      "sdk_usage": "cl.wrap(\"authenticate\", handler)",
+      "discovery_hints": {
+        "ens_namespace": "authenticateagent.eth",
+        "mcp_tool_name": "clas_trust_authenticate",
+        "api_endpoint": "/v1/trust-verification/authenticate"
+      }
+    },
+    {
+      "canonical_name": "clas.trust-verification.authorize",
+      "family": "trust-verification",
+      "version": "1.0.0",
+      "verb": "authorize",
+      "status": "stable",
+      "title": "Authorize Requested Action",
+      "description": "Determines whether an authenticated actor is allowed to perform an action under policy and scope. ENS namespace is optional discovery metadata and is not required.",
+      "request_schema_path": "schemas/trust-verification/authorize/authorize.request.schema.json",
+      "receipt_schema_path": "schemas/trust-verification/authorize/authorize.receipt.schema.json",
+      "examples_path": "schemas/trust-verification/authorize/examples",
+      "openapi_path": "schemas/trust-verification/authorize/authorize.openapi.yaml",
+      "mcp_tool_schema_path": "schemas/trust-verification/authorize/authorize.mcp.tool.schema.json",
+      "verifier_expectations": ["schema_valid", "hash_matched", "signature_valid", "signer_resolved", "signer_matched", "trust_verb_identified", "trust_verb"],
+      "sdk_usage": "cl.wrap(\"authorize\", handler)",
+      "discovery_hints": {
+        "ens_namespace": "authorizeagent.eth",
+        "mcp_tool_name": "clas_trust_authorize",
+        "api_endpoint": "/v1/trust-verification/authorize"
+      }
+    },
+    {
+      "canonical_name": "clas.trust-verification.attest",
+      "family": "trust-verification",
+      "version": "1.0.0",
+      "verb": "attest",
+      "status": "stable",
+      "title": "Attest Trust Claim",
+      "description": "Creates a signed trust claim about a subject for downstream verification. ENS namespace is optional discovery metadata and is not required.",
+      "request_schema_path": "schemas/trust-verification/attest/attest.request.schema.json",
+      "receipt_schema_path": "schemas/trust-verification/attest/attest.receipt.schema.json",
+      "examples_path": "schemas/trust-verification/attest/examples",
+      "openapi_path": "schemas/trust-verification/attest/attest.openapi.yaml",
+      "mcp_tool_schema_path": "schemas/trust-verification/attest/attest.mcp.tool.schema.json",
+      "verifier_expectations": ["schema_valid", "hash_matched", "signature_valid", "signer_resolved", "signer_matched", "trust_verb_identified", "trust_verb"],
+      "sdk_usage": "cl.wrap(\"attest\", handler)",
+      "discovery_hints": {
+        "ens_namespace": "attestagent.eth",
+        "mcp_tool_name": "clas_trust_attest",
+        "api_endpoint": "/v1/trust-verification/attest"
+      }
+    },
+    {
+      "canonical_name": "clas.trust-verification.sign",
+      "family": "trust-verification",
+      "version": "1.0.0",
+      "verb": "sign",
+      "status": "stable",
+      "title": "Sign Trust Payload",
+      "description": "Applies cryptographic signature intent to trust payloads and records proof metadata. ENS namespace is optional discovery metadata and is not required.",
+      "request_schema_path": "schemas/trust-verification/sign/sign.request.schema.json",
+      "receipt_schema_path": "schemas/trust-verification/sign/sign.receipt.schema.json",
+      "examples_path": "schemas/trust-verification/sign/examples",
+      "openapi_path": "schemas/trust-verification/sign/sign.openapi.yaml",
+      "mcp_tool_schema_path": "schemas/trust-verification/sign/sign.mcp.tool.schema.json",
+      "verifier_expectations": ["schema_valid", "hash_matched", "signature_valid", "signer_resolved", "signer_matched", "trust_verb_identified", "trust_verb"],
+      "sdk_usage": "cl.wrap(\"sign\", handler)",
+      "discovery_hints": {
+        "ens_namespace": "signagent.eth",
+        "mcp_tool_name": "clas_trust_sign",
+        "api_endpoint": "/v1/trust-verification/sign"
+      }
+    },
+    {
+      "canonical_name": "clas.trust-verification.permit",
+      "family": "trust-verification",
+      "version": "1.0.0",
+      "verb": "permit",
+      "status": "stable",
+      "title": "Permit Access Artifact",
+      "description": "Represents and validates a portable permission artifact for trust-based access flows. ENS namespace is optional discovery metadata and is not required.",
+      "request_schema_path": "schemas/trust-verification/permit/permit.request.schema.json",
+      "receipt_schema_path": "schemas/trust-verification/permit/permit.receipt.schema.json",
+      "examples_path": "schemas/trust-verification/permit/examples",
+      "openapi_path": "schemas/trust-verification/permit/permit.openapi.yaml",
+      "mcp_tool_schema_path": "schemas/trust-verification/permit/permit.mcp.tool.schema.json",
+      "verifier_expectations": ["schema_valid", "hash_matched", "signature_valid", "signer_resolved", "signer_matched", "trust_verb_identified", "trust_verb"],
+      "sdk_usage": "cl.wrap(\"permit\", handler)",
+      "discovery_hints": {
+        "ens_namespace": "permitagent.eth",
+        "mcp_tool_name": "clas_trust_permit",
+        "api_endpoint": "/v1/trust-verification/permit"
+      }
+    },
+    {
+      "canonical_name": "clas.trust-verification.grant",
+      "family": "trust-verification",
+      "version": "1.0.0",
+      "verb": "grant",
+      "status": "stable",
+      "title": "Grant Rights",
+      "description": "Issues rights or permissions to an actor within a trust-verification context. ENS namespace is optional discovery metadata and is not required.",
+      "request_schema_path": "schemas/trust-verification/grant/grant.request.schema.json",
+      "receipt_schema_path": "schemas/trust-verification/grant/grant.receipt.schema.json",
+      "examples_path": "schemas/trust-verification/grant/examples",
+      "openapi_path": "schemas/trust-verification/grant/grant.openapi.yaml",
+      "mcp_tool_schema_path": "schemas/trust-verification/grant/grant.mcp.tool.schema.json",
+      "verifier_expectations": ["schema_valid", "hash_matched", "signature_valid", "signer_resolved", "signer_matched", "trust_verb_identified", "trust_verb"],
+      "sdk_usage": "cl.wrap(\"grant\", handler)",
+      "discovery_hints": {
+        "ens_namespace": "grantagent.eth",
+        "mcp_tool_name": "clas_trust_grant",
+        "api_endpoint": "/v1/trust-verification/grant"
+      }
+    },
+    {
+      "canonical_name": "clas.trust-verification.approve",
+      "family": "trust-verification",
+      "version": "1.0.0",
+      "verb": "approve",
+      "status": "stable",
+      "title": "Approve Trust Decision",
+      "description": "Records a positive trust decision on a request, transaction, or workflow step. ENS namespace is optional discovery metadata and is not required.",
+      "request_schema_path": "schemas/trust-verification/approve/approve.request.schema.json",
+      "receipt_schema_path": "schemas/trust-verification/approve/approve.receipt.schema.json",
+      "examples_path": "schemas/trust-verification/approve/examples",
+      "openapi_path": "schemas/trust-verification/approve/approve.openapi.yaml",
+      "mcp_tool_schema_path": "schemas/trust-verification/approve/approve.mcp.tool.schema.json",
+      "verifier_expectations": ["schema_valid", "hash_matched", "signature_valid", "signer_resolved", "signer_matched", "trust_verb_identified", "trust_verb"],
+      "sdk_usage": "cl.wrap(\"approve\", handler)",
+      "discovery_hints": {
+        "ens_namespace": "approveagent.eth",
+        "mcp_tool_name": "clas_trust_approve",
+        "api_endpoint": "/v1/trust-verification/approve"
+      }
+    },
+    {
+      "canonical_name": "clas.trust-verification.reject",
+      "family": "trust-verification",
+      "version": "1.0.0",
+      "verb": "reject",
+      "status": "stable",
+      "title": "Reject Trust Decision",
+      "description": "Records a negative trust decision on a request, transaction, or workflow step. ENS namespace is optional discovery metadata and is not required.",
+      "request_schema_path": "schemas/trust-verification/reject/reject.request.schema.json",
+      "receipt_schema_path": "schemas/trust-verification/reject/reject.receipt.schema.json",
+      "examples_path": "schemas/trust-verification/reject/examples",
+      "openapi_path": "schemas/trust-verification/reject/reject.openapi.yaml",
+      "mcp_tool_schema_path": "schemas/trust-verification/reject/reject.mcp.tool.schema.json",
+      "verifier_expectations": ["schema_valid", "hash_matched", "signature_valid", "signer_resolved", "signer_matched", "trust_verb_identified", "trust_verb"],
+      "sdk_usage": "cl.wrap(\"reject\", handler)",
+      "discovery_hints": {
+        "ens_namespace": "rejectagent.eth",
+        "mcp_tool_name": "clas_trust_reject",
+        "api_endpoint": "/v1/trust-verification/reject"
+      }
+    },
+    {
+      "canonical_name": "clas.trust-verification.endorse",
+      "family": "trust-verification",
+      "version": "1.0.0",
+      "verb": "endorse",
+      "status": "stable",
+      "title": "Endorse Trust Subject",
+      "description": "Adds support or trust weight to a subject, claim, signer, or capability. ENS namespace is optional discovery metadata and is not required.",
+      "request_schema_path": "schemas/trust-verification/endorse/endorse.request.schema.json",
+      "receipt_schema_path": "schemas/trust-verification/endorse/endorse.receipt.schema.json",
+      "examples_path": "schemas/trust-verification/endorse/examples",
+      "openapi_path": "schemas/trust-verification/endorse/endorse.openapi.yaml",
+      "mcp_tool_schema_path": "schemas/trust-verification/endorse/endorse.mcp.tool.schema.json",
+      "verifier_expectations": ["schema_valid", "hash_matched", "signature_valid", "signer_resolved", "signer_matched", "trust_verb_identified", "trust_verb"],
+      "sdk_usage": "cl.wrap(\"endorse\", handler)",
+      "discovery_hints": {
+        "ens_namespace": "endorseagent.eth",
+        "mcp_tool_name": "clas_trust_endorse",
+        "api_endpoint": "/v1/trust-verification/endorse"
+      }
+    }
+  ]
+}
