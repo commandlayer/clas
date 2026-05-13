@@ -27,7 +27,12 @@ if (!fs.existsSync(baseDir)) {
 
 const entries = fs
   .readdirSync(baseDir, { withFileTypes: true })
-  .filter((d) => d.isDirectory() && d.name !== '_shared')
+  .filter((d) => {
+    if (!d.isDirectory() || d.name === '_shared') return false;
+    // Skip dirs that don't have the expected verb schema structure
+    const verbDir = path.join(baseDir, d.name);
+    return fs.existsSync(path.join(verbDir, `${d.name}.request.schema.json`));
+  })
   .map((d) => d.name)
   .sort();
 
