@@ -1,14 +1,32 @@
-import Ajv, { ErrorObject, ValidateFunction } from "ajv";
+import Ajv2020, { ErrorObject, ValidateFunction } from "ajv/dist/2020";
 import addFormats from "ajv-formats";
 import path from "node:path";
 import { existsSync, readFileSync } from "node:fs";
+import { pathToFileURL } from "node:url";
 import {
   ClasTrustVerificationVerb,
   ValidationResult,
 } from "./types";
 
-const ajv = new Ajv({ allErrors: true, strict: false });
+const ajv = new Ajv2020({ allErrors: true, strict: false });
 addFormats(ajv);
+
+// Pre-load shared proof schema so $ref in receipt schemas resolves correctly
+const PROOF_SCHEMA_PATH = path.resolve(
+  __dirname,
+  "..",
+  "..",
+  "..",
+  "schemas",
+  "trust-verification",
+  "_shared",
+  "proof.schema.json",
+);
+if (existsSync(PROOF_SCHEMA_PATH)) {
+  const proofSchema = JSON.parse(readFileSync(PROOF_SCHEMA_PATH, "utf8"));
+  proofSchema.$id = pathToFileURL(PROOF_SCHEMA_PATH).href;
+  ajv.addSchema(proofSchema);
+}
 
 const schemaCache = new Map<string, ValidateFunction>();
 
@@ -50,7 +68,19 @@ function getValidator(
     );
   }
 
+  // For receipt schemas, pre-load the sibling request schema so relative $refs resolve
+  if (kind === "receipt") {
+    const reqPath = getSchemaPath(verb, "request");
+    const reqId = pathToFileURL(reqPath).href;
+    if (existsSync(reqPath) && !ajv.getSchema(reqId)) {
+      const reqSchema = JSON.parse(readFileSync(reqPath, "utf8"));
+      reqSchema.$id = reqId;
+      ajv.addSchema(reqSchema);
+    }
+  }
+
   const schema = JSON.parse(readFileSync(schemaPath, "utf8"));
+  schema.$id = pathToFileURL(schemaPath).href;
   const validator = ajv.compile(schema);
   schemaCache.set(key, validator);
   return validator;

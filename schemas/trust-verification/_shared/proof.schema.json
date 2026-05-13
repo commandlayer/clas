@@ -6,15 +6,14 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "canonicalization",
-    "hash",
+    "canonical",
     "alg",
     "signature",
     "kid",
     "signer_id"
   ],
   "properties": {
-    "canonicalization": {
+    "canonical": {
       "const": "json.sorted_keys.v1"
     },
     "hash": {
