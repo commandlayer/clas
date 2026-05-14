@@ -1,11 +1,11 @@
 {
   "version": "1.0.0",
-  "family": "trust-verification",
+  "family": "trust",
   "verb": "authenticate",
   "receipt_id": "rcpt-authenticate-20260510-0001",
   "request": {
     "version": "1.0.0",
-    "family": "trust-verification",
+    "family": "trust",
     "verb": "authenticate",
     "subject": {
       "type": "agent_signer",
@@ -29,11 +29,11 @@
     }
   },
   "authentication": {
-    "status": "authenticated",
+    "status": "unauthenticated",
     "subject_id": "agent.build-bot-17",
     "method": "did-sig-challenge",
-    "confidence": 0.41,
-    "reason": "Challenge response verified against DID document.",
+    "confidence": 0.0,
+    "reason": "TAMPERED: status changed from authenticated to unauthenticated after signing.",
     "expires_at": "2026-05-10T15:00:00Z"
   },
   "ts": "2026-05-10T12:05:00Z",

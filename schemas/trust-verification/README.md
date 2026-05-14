@@ -70,14 +70,14 @@ Every receipt references the shared proof schema:
 
 - `../_shared/proof.schema.json`
 
-Shared proof fields:
+Shared proof fields (as defined in `_shared/proof.schema.json`):
 
-- `canonicalization`
-- `hash`
-- `signature_alg`
-- `signature`
-- `key_id`
-- `signer`
+- `canonical` — canonicalization algorithm identifier (const: `json.sorted_keys.v1`)
+- `hash` — SHA-256 hash of the canonical payload (pattern: `sha256:<64 hex chars>`)
+- `alg` — signature algorithm (enum: `ed25519`)
+- `signature` — the cryptographic signature value
+- `kid` — key identifier
+- `signer_id` — identifier of the signing party
 
 These fields provide a common cryptographic envelope model across all verb receipts.
 

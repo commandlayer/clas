@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust-verification/authenticate/authenticate.receipt.schema.json",
-  "title": "CLAS Trust Verification Authenticate Receipt",
+  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust/authenticate/authenticate.receipt.schema.json",
+  "title": "CLAS Trust Authenticate Receipt",
   "description": "A signed receipt proving that an authentication action was performed.",
   "type": "object",
   "additionalProperties": false,
@@ -17,7 +17,7 @@
   ],
   "properties": {
     "version": { "const": "1.0.0" },
-    "family": { "const": "trust-verification" },
+    "family": { "const": "trust" },
     "verb": { "const": "authenticate" },
     "receipt_id": {
       "type": "string",
