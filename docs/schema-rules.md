@@ -30,4 +30,8 @@ CLAS v1 prioritizes portability and clarity over large, monolithic enterprise pa
 
 ## Schema-valid vs cryptographically valid
 
-A receipt can pass schema validation while still failing cryptographic verification. Schema conformance and cryptographic integrity are separate checks. Both must be evaluated.
+A receipt can pass schema validation while still failing cryptographic verification. Schema conformance and cryptographic integrity are **separate and independent checks**. Both must be evaluated by a conformant verifier. The `tampered.receipt.json` example files in each verb's `examples/` directory illustrate this: they are intentionally schema-valid but contain tampered payload fields that would fail Ed25519 signature verification.
+
+## Hash binding requirement
+
+All CLAS receipts MUST include a `proof.hash` field containing a `sha256:` prefixed hex digest of the canonicalized receipt payload. This field is required in the proof schema and enforced at validation time. A receipt that omits `proof.hash` is schema-invalid.

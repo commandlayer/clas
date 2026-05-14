@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "node --test dist/**/*.test.js 2>/dev/null || echo 'No tests found — run npm run build first'"
+    "test": "node --test dist/**/*.test.js"
   },
   "dependencies": {
     "ajv": "^8.17.1",
