@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "family": "trust-verification",
+  "family": "trust",
   "verb": "authenticate",
   "subject": {
     "type": "agent_signer",

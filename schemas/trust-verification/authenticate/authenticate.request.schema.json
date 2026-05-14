@@ -1,14 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust-verification/authenticate/authenticate.request.schema.json",
-  "title": "CLAS Trust Verification Authenticate Request",
+  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust/authenticate/authenticate.request.schema.json",
+  "title": "CLAS Trust Authenticate Request",
   "description": "A request to authenticate the identity of an actor, signer, service, key, agent, or caller.",
   "type": "object",
   "additionalProperties": false,
   "required": ["version", "family", "verb", "subject"],
   "properties": {
     "version": { "const": "1.0.0" },
-    "family": { "const": "trust-verification" },
+    "family": { "const": "trust" },
     "verb": { "const": "authenticate" },
     "subject": {
       "type": "object",
