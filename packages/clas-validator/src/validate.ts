@@ -8,7 +8,7 @@ import {
   ValidationResult,
 } from "./types";
 
-const ajv = new Ajv2020({ allErrors: true, strict: false });
+const ajv = new Ajv2020({ allErrors: true, strict: false, validateFormats: true });
 addFormats(ajv);
 
 // Pre-load shared proof schema so $ref in receipt schemas resolves correctly
@@ -99,7 +99,6 @@ function validateByKind(
 
   return { valid, errors };
 }
-
 
 export function validateTrustRequest(
   verb: ClasTrustVerificationVerb,

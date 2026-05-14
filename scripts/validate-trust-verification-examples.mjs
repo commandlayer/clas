@@ -9,6 +9,15 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..');
 const baseDir = path.join(repoRoot, 'schemas', 'trust-verification');
 
+// EXPECTATIONS per example file:
+// - valid.request.json:   schema-valid request          -> shouldPass: true
+// - valid.receipt.json:   schema-valid receipt           -> shouldPass: true
+// - tampered.receipt.json: schema-valid but the receipt
+//   payload has been semantically tampered (e.g. result
+//   field changed after signing). It must still be
+//   schema-valid — cryptographic invalidity is checked
+//   by a separate verifier, not the JSON schema layer.
+// - invalid.receipt.json: schema-invalid receipt        -> shouldPass: false
 const EXPECTATIONS = [
   { file: 'valid.request.json', schemaType: 'request', shouldPass: true },
   { file: 'valid.receipt.json', schemaType: 'receipt', shouldPass: true },
@@ -17,7 +26,7 @@ const EXPECTATIONS = [
 ];
 
 function fail(msg) {
-  console.error(`ERROR: ${msg}`);
+  process.stderr.write(`ERROR: ${msg}\n`);
   process.exit(1);
 }
 
@@ -75,7 +84,7 @@ for (const verb of entries) {
   const validateReceipt = ajv.getSchema(receiptSchema.$id) || ajv.compile(receiptSchema);
 
   let verbFailed = false;
-  console.log(`\n[${verb}]`);
+  process.stdout.write(`\n[${verb}]\n`);
 
   for (const { file, schemaType, shouldPass } of EXPECTATIONS) {
     const targetPath = path.join(examplesDir, file);
@@ -94,21 +103,21 @@ for (const verb of entries) {
     const status = expectationMet ? 'PASS' : 'FAIL';
     const expected = shouldPass ? 'valid' : 'invalid';
     const got = ok ? 'valid' : 'invalid';
-    console.log(`  ${status} ${file} (${schemaType}) expected ${expected}, got ${got}`);
+    process.stdout.write(`  ${status} ${file} (${schemaType}) expected ${expected}, got ${got}\n`);
 
     if (!expectationMet && validate.errors?.length) {
       for (const err of validate.errors) {
-        console.log(`    - ${err.instancePath || '/'} ${err.message}`);
+        process.stdout.write(`    - ${err.instancePath || '/'} ${err.message}\n`);
       }
     }
   }
 
-  console.log(`  Summary: ${verbFailed ? 'FAIL' : 'PASS'}`);
+  process.stdout.write(`  Summary: ${verbFailed ? 'FAIL' : 'PASS'}\n`);
 }
 
 if (hasExpectationFailures) {
-  console.error('\nOne or more verbs failed expected validation outcomes.');
+  process.stderr.write('\nOne or more verbs failed expected validation outcomes.\n');
   process.exit(1);
 }
 
-console.log('\nAll trust-verification example validations matched expected outcomes.');
+process.stdout.write('\nAll trust-verification example validations matched expected outcomes.\n');
