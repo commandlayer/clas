@@ -13,7 +13,7 @@
     "request",
     "rejection",
     "ts",
-    "proof"
+    "metadata"
   ],
   "properties": {
     "version": {
@@ -59,8 +59,17 @@
       "type": "string",
       "format": "date-time"
     },
-    "proof": {
-      "$ref": "../_shared/proof.schema.json"
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "proof"
+      ],
+      "properties": {
+        "proof": {
+          "$ref": "../_shared/proof.schema.json"
+        }
+      }
     }
   }
 }

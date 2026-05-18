@@ -29,12 +29,18 @@
     "content_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
   },
   "ts": "2026-05-10T12:05:00Z",
-  "proof": {
-    "canonical": "json.sorted_keys.v1",
-    "hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    "alg": "ed25519",
-    "signature": "ed25519:demo:9f7c4d1ab3e6c8d14f2a98b7c3d5e1f09a8b7c6d5e4f3029182736455aabbccd",
-    "kid": "cl-key-1",
-    "signer_id": "runtime.commandlayer.eth"
+  "metadata": {
+    "proof": {
+      "canonicalization": "json.sorted_keys.v1",
+      "hash": {
+        "alg": "SHA-256",
+        "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "signature": {
+        "alg": "Ed25519",
+        "value": "ed25519:demo:9f7c4d1ab3e6c8d14f2a98b7c3d5e1f09a8b7c6d5e4f3029182736455aabbccd",
+        "kid": "cl-key-1"
+      }
+    }
   }
 }

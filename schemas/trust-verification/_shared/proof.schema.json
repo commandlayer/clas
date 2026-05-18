@@ -1,40 +1,57 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://schemas.commandlayer.org/schemas/trust-verification/_shared/proof.schema.json",
+  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust/_shared/proof.schema.json",
   "title": "CLAS Trust Proof",
   "description": "Shared proof envelope for trust verification receipts.",
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "canonical",
+    "canonicalization",
     "hash",
-    "alg",
-    "signature",
-    "kid",
-    "signer_id"
+    "signature"
   ],
   "properties": {
-    "canonical": {
+    "canonicalization": {
       "const": "json.sorted_keys.v1"
     },
     "hash": {
-      "type": "string",
-      "pattern": "^sha256:[a-fA-F0-9]{64}$"
-    },
-    "alg": {
-      "enum": ["ed25519"]
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "alg",
+        "value"
+      ],
+      "properties": {
+        "alg": {
+          "const": "SHA-256"
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        }
+      }
     },
     "signature": {
-      "type": "string",
-      "minLength": 16
-    },
-    "kid": {
-      "type": "string",
-      "minLength": 1
-    },
-    "signer_id": {
-      "type": "string",
-      "minLength": 1
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "alg",
+        "value",
+        "kid"
+      ],
+      "properties": {
+        "alg": {
+          "const": "Ed25519"
+        },
+        "value": {
+          "type": "string",
+          "minLength": 16
+        },
+        "kid": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
     }
   }
 }
