@@ -36,6 +36,5 @@
     "reason": "Challenge response verified against DID document.",
     "expires_at": "2026-05-10T15:00:00Z"
   },
-  "ts": "2026-05-10T12:05:00Z",
-  "proof": null
+  "ts": "2026-05-10T12:05:00Z"
 }

@@ -12,7 +12,7 @@ An MCP server implementing `get_action_schema` can return canonical CLAS schema 
 
 ## `verify_receipt`
 
-An MCP server implementing `verify_receipt` can validate CLAS receipts using canonicalization, SHA-256 hashes, and Ed25519 signatures.
+An MCP server implementing `verify_receipt` can transport verification requests and results, but it is not the trust root; trust validation is performed by runtime/verifyagent against CLAS receipt contracts.
 
 ## Trust model
 
