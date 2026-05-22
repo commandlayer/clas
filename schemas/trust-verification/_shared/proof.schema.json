@@ -12,7 +12,10 @@
   ],
   "properties": {
     "canonicalization": {
-      "const": "json.sorted_keys.v1"
+      "enum": [
+        "json.sorted_keys.v1",
+        "erc8211.merkle.v1"
+      ]
     },
     "hash": {
       "type": "object",
@@ -32,26 +35,68 @@
       }
     },
     "signature": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "alg",
-        "value",
-        "kid"
-      ],
-      "properties": {
-        "alg": {
-          "const": "Ed25519"
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "alg",
+            "value",
+            "kid"
+          ],
+          "properties": {
+            "alg": {
+              "const": "Ed25519"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 16
+            },
+            "kid": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
         },
-        "value": {
-          "type": "string",
-          "minLength": 16
-        },
-        "kid": {
-          "type": "string",
-          "minLength": 1
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "alg",
+              "value",
+              "kid",
+              "role"
+            ],
+            "properties": {
+              "alg": {
+                "const": "Ed25519"
+              },
+              "value": {
+                "type": "string",
+                "minLength": 16
+              },
+              "kid": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "user",
+                  "solver",
+                  "relayer",
+                  "agent",
+                  "runtime",
+                  "verifier"
+                ]
+              }
+            }
+          }
         }
-      }
+      ]
     }
   }
 }
