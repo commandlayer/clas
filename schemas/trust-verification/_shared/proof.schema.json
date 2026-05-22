@@ -12,9 +12,10 @@
   ],
   "properties": {
     "canonicalization": {
+      "$comment": "erc8211.composable.v1: ERC-8211 composable execution canonicalization recognized. Merkle authorization verification is deferred pending the companion Merkle authorization ERC.",
       "enum": [
         "json.sorted_keys.v1",
-        "erc8211.merkle.v1"
+        "erc8211.composable.v1"
       ]
     },
     "hash": {
