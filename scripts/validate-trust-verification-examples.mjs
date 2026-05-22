@@ -101,8 +101,8 @@ for (const verb of entries) {
     hash: { alg: 'SHA-256', value: 'a'.repeat(64) },
     signature: { alg: 'Ed25519', value: 'signaturevalue1234', kid: 'key-1' },
   };
-  const proofMerkle = {
-    canonicalization: 'erc8211.merkle.v1',
+  const proofComposable = {
+    canonicalization: 'erc8211.composable.v1',
     hash: { alg: 'SHA-256', value: 'b'.repeat(64) },
     signature: [
       { alg: 'Ed25519', value: 'signaturevalue1234', kid: 'key-1', role: 'solver' },
@@ -111,7 +111,7 @@ for (const verb of entries) {
 
   const schemaChecks = [
     { name: 'proof single-signature json.sorted_keys.v1', ok: validateProof(proofSingle) },
-    { name: 'proof erc8211.merkle.v1 with signature role array', ok: validateProof(proofMerkle) },
+    { name: 'proof erc8211.composable.v1 with signature role array', ok: validateProof(proofComposable) },
     { name: 'metadata proof only', ok: validateMetadata({ proof: proofSingle }) },
     { name: 'metadata proof + trace', ok: validateMetadata({ proof: proofSingle, trace: { trace_id: 'trace-1', span_id: 'span-1' } }) },
     { name: 'metadata unknown extra field rejected', ok: !validateMetadata({ proof: proofSingle, extra: true }) },
