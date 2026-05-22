@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/trust/_shared/trace.schema.json",
+  "title": "CLAS Trace",
+  "description": "Shared trace envelope for correlating requests and receipts across agents, hops, workflows, solver fills, and spans.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "trace_id"
+  ],
+  "properties": {
+    "trace_id": {
+      "type": "string",
+      "maxLength": 128
+    },
+    "span_id": {
+      "type": "string",
+      "maxLength": 128
+    },
+    "parent_span_id": {
+      "type": "string",
+      "maxLength": 128
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "maxLength": 512
+      }
+    }
+  }
+}

@@ -73,6 +73,9 @@
       "properties": {
         "proof": {
           "$ref": "../_shared/proof.schema.json"
+        },
+        "trace": {
+          "$ref": "../_shared/trace.schema.json"
         }
       }
     }

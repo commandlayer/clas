@@ -67,15 +67,20 @@ for (const verb of entries) {
   const requestSchema = JSON.parse(fs.readFileSync(requestSchemaPath, 'utf8'));
   const receiptSchema = JSON.parse(fs.readFileSync(receiptSchemaPath, 'utf8'));
   const proofSchemaPath = path.join(baseDir, '_shared', 'proof.schema.json');
+  const traceSchemaPath = path.join(baseDir, '_shared', 'trace.schema.json');
 
   if (!fs.existsSync(proofSchemaPath)) fail(`[${verb}] Missing shared schema: ${proofSchemaPath}`);
+  if (!fs.existsSync(traceSchemaPath)) fail(`[${verb}] Missing shared schema: ${traceSchemaPath}`);
 
   requestSchema.$id ??= pathToFileURL(requestSchemaPath).href;
   receiptSchema.$id ??= pathToFileURL(receiptSchemaPath).href;
 
   const proofSchema = JSON.parse(fs.readFileSync(proofSchemaPath, 'utf8'));
+  const traceSchema = JSON.parse(fs.readFileSync(traceSchemaPath, 'utf8'));
   proofSchema.$id ??= pathToFileURL(proofSchemaPath).href;
+  traceSchema.$id ??= pathToFileURL(traceSchemaPath).href;
 
+  ajv.addSchema(traceSchema);
   ajv.addSchema(proofSchema);
   ajv.addSchema(requestSchema);
   ajv.addSchema(receiptSchema);
@@ -83,8 +88,47 @@ for (const verb of entries) {
   const validateRequest = ajv.getSchema(requestSchema.$id) || ajv.compile(requestSchema);
   const validateReceipt = ajv.getSchema(receiptSchema.$id) || ajv.compile(receiptSchema);
 
+  const validateProof = ajv.getSchema(proofSchema.$id) || ajv.compile(proofSchema);
+  const metadataSchema = receiptSchema.properties?.metadata;
+  if (!metadataSchema) fail(`[${verb}] Receipt schema missing metadata property`);
+  const metadataSchemaResolved = JSON.parse(JSON.stringify(metadataSchema));
+  if (metadataSchemaResolved.properties?.proof?.$ref) metadataSchemaResolved.properties.proof.$ref = proofSchema.$id;
+  if (metadataSchemaResolved.properties?.trace?.$ref) metadataSchemaResolved.properties.trace.$ref = traceSchema.$id;
+  const validateMetadata = ajv.compile(metadataSchemaResolved);
+
+  const proofSingle = {
+    canonicalization: 'json.sorted_keys.v1',
+    hash: { alg: 'SHA-256', value: 'a'.repeat(64) },
+    signature: { alg: 'Ed25519', value: 'signaturevalue1234', kid: 'key-1' },
+  };
+  const proofMerkle = {
+    canonicalization: 'erc8211.merkle.v1',
+    hash: { alg: 'SHA-256', value: 'b'.repeat(64) },
+    signature: [
+      { alg: 'Ed25519', value: 'signaturevalue1234', kid: 'key-1', role: 'solver' },
+    ],
+  };
+
+  const schemaChecks = [
+    { name: 'proof single-signature json.sorted_keys.v1', ok: validateProof(proofSingle) },
+    { name: 'proof erc8211.merkle.v1 with signature role array', ok: validateProof(proofMerkle) },
+    { name: 'metadata proof only', ok: validateMetadata({ proof: proofSingle }) },
+    { name: 'metadata proof + trace', ok: validateMetadata({ proof: proofSingle, trace: { trace_id: 'trace-1', span_id: 'span-1' } }) },
+    { name: 'metadata unknown extra field rejected', ok: !validateMetadata({ proof: proofSingle, extra: true }) },
+  ];
+
+
   let verbFailed = false;
   process.stdout.write(`\n[${verb}]\n`);
+
+  for (const check of schemaChecks) {
+    const status = check.ok ? 'PASS' : 'FAIL';
+    process.stdout.write(`  ${status} schema-check ${check.name}\n`);
+    if (!check.ok) {
+      verbFailed = true;
+      hasExpectationFailures = true;
+    }
+  }
 
   for (const { file, schemaType, shouldPass } of EXPECTATIONS) {
     const targetPath = path.join(examplesDir, file);
