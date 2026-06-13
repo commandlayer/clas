@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.commandlayer.org/schemas/v1.0.0/execution/execution.receipt.schema.json",
+  "title": "CLAS Execution Receipt",
+  "description": "Schema for clas.execution.receipt.v1 receipts with separately scoped execution and settlement proofs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "clas",
+    "schema",
+    "receipt_id",
+    "verb",
+    "agent",
+    "action",
+    "proofs"
+  ],
+  "properties": {
+    "clas": {
+      "const": "1.0"
+    },
+    "schema": {
+      "const": "clas.execution.receipt.v1"
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verb": {
+      "type": "string",
+      "minLength": 1
+    },
+    "agent": {
+      "$ref": "#/$defs/agent"
+    },
+    "action": {
+      "$ref": "#/$defs/action"
+    },
+    "settlement": {
+      "$ref": "#/$defs/settlement"
+    },
+    "proofs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/proof"
+      },
+      "contains": {
+        "$ref": "#/$defs/executionProof"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": ["settlement"]
+      },
+      "then": {
+        "properties": {
+          "proofs": {
+            "contains": {
+              "$ref": "#/$defs/settlementProof"
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "proofs": {
+            "not": {
+              "contains": {
+                "$ref": "#/$defs/settlementProof"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256Uri": {
+      "type": "string",
+      "pattern": "^sha256:.+"
+    },
+    "agent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ens",
+        "erc8004",
+        "kid",
+        "public_key_source"
+      ],
+      "properties": {
+        "ens": {
+          "type": "string",
+          "minLength": 1
+        },
+        "erc8004": {
+          "type": "string",
+          "pattern": "^eip155:[0-9]+/erc8004/[0-9]+#.+$"
+        },
+        "kid": {
+          "type": "string",
+          "minLength": 1
+        },
+        "public_key_source": {
+          "type": "string",
+          "enum": ["ens_txt"]
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_hash",
+        "output_hash",
+        "started_at",
+        "completed_at"
+      ],
+      "properties": {
+        "input_hash": {
+          "$ref": "#/$defs/sha256Uri"
+        },
+        "output_hash": {
+          "$ref": "#/$defs/sha256Uri"
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "settlement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rail",
+        "privacy",
+        "status",
+        "payment_ref",
+        "payee_commitment",
+        "verification"
+      ],
+      "properties": {
+        "rail": {
+          "type": "string",
+          "enum": ["x402"]
+        },
+        "privacy": {
+          "type": "string",
+          "enum": ["stealth_address"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["settled"]
+        },
+        "payment_ref": {
+          "description": "Opaque settlement reference; raw public transaction hashes are not allowed.",
+          "type": "string",
+          "minLength": 1,
+          "not": {
+            "pattern": "^0x[a-fA-F0-9]{64}$"
+          }
+        },
+        "payee_commitment": {
+          "$ref": "#/$defs/sha256Uri"
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode", "viewer_required"],
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": ["selective_disclosure"]
+            },
+            "viewer_required": {
+              "type": "boolean",
+              "const": true
+            }
+          }
+        }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["alg", "kid", "value"],
+      "properties": {
+        "alg": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kid": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 16
+        }
+      }
+    },
+    "executionProof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "covers", "signer", "canonicalization", "signature"],
+      "properties": {
+        "type": {
+          "const": "execution"
+        },
+        "covers": {
+          "const": ["receipt_id", "verb", "agent", "action"]
+        },
+        "signer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonicalization": {
+          "const": "json.sorted_keys.v1"
+        },
+        "signature": {
+          "allOf": [
+            { "$ref": "#/$defs/signature" },
+            {
+              "properties": {
+                "alg": {
+                  "const": "Ed25519"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "settlementProof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "covers", "signer", "canonicalization", "signature"],
+      "properties": {
+        "type": {
+          "const": "settlement"
+        },
+        "covers": {
+          "const": ["receipt_id", "settlement"]
+        },
+        "signer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonicalization": {
+          "const": "json.sorted_keys.v1"
+        },
+        "signature": {
+          "$ref": "#/$defs/signature"
+        }
+      }
+    },
+    "proof": {
+      "oneOf": [
+        { "$ref": "#/$defs/executionProof" },
+        { "$ref": "#/$defs/settlementProof" }
+      ]
+    }
+  }
+}

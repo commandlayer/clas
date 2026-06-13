@@ -1,0 +1,53 @@
+{
+  "clas": "1.0",
+  "schema": "clas.execution.receipt.v1",
+  "receipt_id": "clas_exec_20260612_approve_acme_002",
+  "verb": "approve",
+  "agent": {
+    "ens": "acme.approveagent.eth",
+    "erc8004": "eip155:8453/erc8004/33370#acme-approve-agent",
+    "kid": "tenant-ed25519-kid-20260612",
+    "public_key_source": "ens_txt"
+  },
+  "action": {
+    "input_hash": "sha256:f0d1f9b45bf318e2f640ff485226dcd2ab1e9cf7370c1a78a965cffcd9856693",
+    "output_hash": "sha256:947dba274a30b80baac28f035f46b3e8e52ebd954c9f9536050d5a3c878b4a90",
+    "started_at": "2026-06-12T14:03:11Z",
+    "completed_at": "2026-06-12T14:03:12Z"
+  },
+  "settlement": {
+    "rail": "x402",
+    "privacy": "stealth_address",
+    "status": "settled",
+    "payment_ref": "x402_settlement_opaque_20260612_acme_002",
+    "payee_commitment": "sha256:bf54f8a8c30c5cb372498344e3c9f3c8ea7c8cc17c3b78f996bf7eab0fb3ed54",
+    "verification": {
+      "mode": "selective_disclosure",
+      "viewer_required": true
+    }
+  },
+  "proofs": [
+    {
+      "type": "execution",
+      "covers": ["receipt_id", "verb", "agent", "action"],
+      "signer": "acme.approveagent.eth",
+      "canonicalization": "json.sorted_keys.v1",
+      "signature": {
+        "alg": "Ed25519",
+        "kid": "tenant-ed25519-kid-20260612",
+        "value": "base64url_execution_signature_example"
+      }
+    },
+    {
+      "type": "settlement",
+      "covers": ["receipt_id", "settlement"],
+      "signer": "x402:payer-or-rail-identity",
+      "canonicalization": "json.sorted_keys.v1",
+      "signature": {
+        "alg": "rail-supported-alg",
+        "kid": "rail-or-payer-kid-20260612",
+        "value": "base64url_settlement_signature_example"
+      }
+    }
+  ]
+}

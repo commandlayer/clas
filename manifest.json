@@ -6,6 +6,11 @@
       "family": "trust-verification",
       "manifest": "schemas/trust-verification/manifest.json",
       "status": "draft-v1"
+    },
+    {
+      "family": "execution",
+      "manifest": "schemas/execution/manifest.json",
+      "status": "draft-v1"
     }
   ]
 }

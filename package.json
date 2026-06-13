@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "test": "node scripts/validate-trust-verification-examples.mjs",
-    "validate": "node scripts/validate-trust-verification-examples.mjs",
-    "validate:trust-verification": "node scripts/validate-trust-verification-examples.mjs"
+    "test": "npm run validate:trust-verification && npm run validate:execution",
+    "validate": "npm run validate:trust-verification && npm run validate:execution",
+    "validate:trust-verification": "node scripts/validate-trust-verification-examples.mjs",
+    "validate:execution": "node scripts/validate-execution-receipts.mjs"
   },
   "devDependencies": {
     "ajv": "^8.17.1",
