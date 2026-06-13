@@ -1,0 +1,13 @@
+{
+  "family": "execution",
+  "version": "1.0.0",
+  "status": "draft-v1",
+  "schemas": [
+    {
+      "name": "clas.execution.receipt.v1",
+      "schema_path": "execution.receipt.schema.json",
+      "examples_path": "../../examples/execution",
+      "description": "Execution receipt schema with separately scoped execution and settlement proofs."
+    }
+  ]
+}

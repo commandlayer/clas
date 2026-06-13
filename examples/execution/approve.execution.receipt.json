@@ -1,0 +1,31 @@
+{
+  "clas": "1.0",
+  "schema": "clas.execution.receipt.v1",
+  "receipt_id": "clas_exec_20260612_approve_acme_001",
+  "verb": "approve",
+  "agent": {
+    "ens": "acme.approveagent.eth",
+    "erc8004": "eip155:8453/erc8004/33370#acme-approve-agent",
+    "kid": "tenant-ed25519-kid-20260612",
+    "public_key_source": "ens_txt"
+  },
+  "action": {
+    "input_hash": "sha256:2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6",
+    "output_hash": "sha256:872e4e50ce9990d8b041330c47c9ddd11bec6b503ae9386a99da8584e9bb12c4",
+    "started_at": "2026-06-12T14:03:11Z",
+    "completed_at": "2026-06-12T14:03:12Z"
+  },
+  "proofs": [
+    {
+      "type": "execution",
+      "covers": ["receipt_id", "verb", "agent", "action"],
+      "signer": "acme.approveagent.eth",
+      "canonicalization": "json.sorted_keys.v1",
+      "signature": {
+        "alg": "Ed25519",
+        "kid": "tenant-ed25519-kid-20260612",
+        "value": "base64url_execution_signature_example"
+      }
+    }
+  ]
+}
